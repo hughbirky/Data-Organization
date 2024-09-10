@@ -171,7 +171,7 @@ Consonant_Func <- function(participant, date, calDate, origin){
     
     # 
     # # Changing writing directory into the vowel folder
-    path1 <- paste0("C:/Users/hughm/OneDrive - Belmont University/Personal/Desktop/VUMC/R01R21/Vowel_Consonant/",participant[p],"/Consonant")
+    # path1 <- paste0("C:/Users/hughm/OneDrive - Belmont University/Personal/Desktop/VUMC/R01R21/Vowel_Consonant/",participant[p],"/Consonant")
     setwd(analysis)
     
     # Writing the new excel sheet to the other folder

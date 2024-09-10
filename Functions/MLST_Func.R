@@ -69,7 +69,7 @@ MLST_Func <- function(participant, date, calDate, origin){
   length <- length(Data$Response)
   
   # Importing Template
-  template <- read_excel("C:/Users/hughm/OneDrive - VUMC/General/R01+R21 Outcomes Studies/Analysis/Scoring/Scoring templates/MLST/MLST template.xlsx")
+  template <- read_excel(paste0(origin,"General/R01+R21 Outcomes Studies/Analysis/Scoring/Scoring templates/MLST/MLST template.xlsx"))
   
   # Adding new columns
   Data$KeyWords <- template$KeyWords[1:length]

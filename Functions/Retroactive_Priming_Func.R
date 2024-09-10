@@ -88,7 +88,7 @@ Retroactive_Priming_Func <- function(participant, date, calDate, origin){
     Data2 <- Data2 %>% arrange(Prime)
     
     # Reading in the template
-    template <- read_excel("C:/Users/hughm/OneDrive - VUMC/General/R01+R21 Outcomes Studies/Analysis/Code/R01R21 Scripts/Retroactive Priming/RetroPriming_Template.xlsx")
+    template <- read_excel(paste0(origin,"General/R01+R21 Outcomes Studies/Analysis/Code/R01R21 Scripts/Retroactive Priming/RetroPriming_Template.xlsx"))
     
     # Adding in extra columns
     Data2$Noise <- template$Noise

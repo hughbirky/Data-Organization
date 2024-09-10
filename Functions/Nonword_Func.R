@@ -28,9 +28,9 @@ Nonword_Func <- function(participant, date, calDate, origin){
   
   
   # Copying files over
-  file.copy(from = "C:/Users/hughm/OneDrive - VUMC/General/R01+R21 Outcomes Studies/Data Collection/Scoring Templates/Nonword Recognition/NWR score sheet integrity check.xlsx", to = paste0(path,"/",participant,"_",calDate,"_Nonword.xlsx"))
+  file.copy(from = paste0(origin,"General/R01+R21 Outcomes Studies/Data Collection/Scoring Templates/Nonword Recognition/NWR score sheet integrity check.xlsx"), to = paste0(path,"/",participant,"_",calDate,"_Nonword.xlsx"))
   
   
   
-  setwd("C:/Users/hughm")
+  # setwd("C:/Users/hughm")
 }

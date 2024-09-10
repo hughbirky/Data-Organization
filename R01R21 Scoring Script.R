@@ -103,8 +103,11 @@ Inquisit <- T
 
 
 
-
-setwd("C:/Users/hughm/OneDrive - VUMC/General/R01+R21 Outcomes Studies/Analysis/Code/R01R21 Scripts/Combined Scripts/Functions")
+if(grepl(origin,"C:")){
+  setwd("C:/Users/hughm/OneDrive - VUMC/General/R01+R21 Outcomes Studies/Analysis/Code/R01R21 Scripts/Combined Scripts/Functions")
+} else {
+  setwd("/Users/gizem/Desktop/Data-Organization/Functions")
+}
 source("Lexical_Decision_Func.R")
 source("Consonant_Func.R")
 source("Vowel_Func.R")

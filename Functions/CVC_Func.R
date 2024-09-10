@@ -66,7 +66,7 @@ task <- c("CVC")
       listName <-gsub(x = listName, pattern = "-", replacement = "")
       
       # Getting template path
-      templatePath <- paste0("C:/Users/hughm/OneDrive - VUMC/General/R01+R21 Outcomes Studies/Analysis/Scoring/Scoring templates/",task[t])
+      templatePath <- paste0(origin,"General/R01+R21 Outcomes Studies/Analysis/Scoring/Scoring templates/",task[t])
       setwd(templatePath)
       
       # Getting a list of all of the folders

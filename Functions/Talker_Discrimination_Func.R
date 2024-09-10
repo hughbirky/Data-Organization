@@ -14,7 +14,6 @@ Talker_Discrimination_Func <- function(participant, date, calDate, origin){
     p = 1
     d = 1
   
-    analysis <- "C:/Users/hughm/OneDrive - VUMC/General/R01+R21 Outcomes Studies/Analysis/Scoring/Completed scoring"
     # Setting the unwanted columns shared between spreadsheets
     gorillaColumns <- c("Event Index","UTC Timestamp","UTC Date and Time","Local Timezone","Experiment ID","Experiment Version",
                         "Tree Node Key","Repeat Key","Schedule ID","Participant Private ID","Participant Starting Group",

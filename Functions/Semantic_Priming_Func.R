@@ -28,10 +28,10 @@ Semantic_Priming_Func <- function(participant, date, calDate, origin){
   
   
   # Copying files over
-  file.copy(from = "C:/Users/hughm/OneDrive - VUMC/General/R01+R21 Outcomes Studies/Analysis/Scoring/Scoring Templates/Semantic Priming/Semantic_Priming Scoring Template.xlsx", to = paste0(path,"/",participant,"_",calDate,"_Semantic.xlsx"))
+  file.copy(from = paste0(origin,"General/R01+R21 Outcomes Studies/Analysis/Scoring/Scoring Templates/Semantic Priming/Semantic_Priming Scoring Template.xlsx", to = paste0(path,"/",participant,"_",calDate,"_Semantic.xlsx")))
   
   
   
-  setwd("C:/Users/hughm")
+  # setwd("C:/Users/hughm")
 
 }
