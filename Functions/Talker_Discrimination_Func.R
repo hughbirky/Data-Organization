@@ -1,23 +1,13 @@
-Talker_Discrimination_Func <- function(participant, date, calDate){
+Talker_Discrimination_Func <- function(participant, date, calDate, origin){
 
+  
+  
+  
   move_to_analysis <- T
   
-  # Finding who's computer we are on
-  origin <- "C:/Users"
-  # Setting the working path for data collection
-  setwd(origin)
-  # Getting a list of all of the excel files
-  files = list.files(full.names = T)
-  # Getting rid of the ./
-  files <- gsub(x = files, pattern = "./", replacement = "")
-  # Getting the folder we need for the participant
-  files <- files[grepl("hughm", files)]
-  
-  if(files == "hughm"){
-    path <- "C:/Users/hughm/OneDrive - VUMC/General/R01+R21 Outcomes Studies/Data Collection/Subject testing/Cochlear Implant"
-  } else{
-    path <- "f"
-  }
+  # Setting paths
+  path <- paste0(origin,"OneDrive - VUMC/General/R01+R21 Outcomes Studies/Data Collection/Subject testing/Cochlear Implant")
+  analysis <- paste0(origin,"OneDrive - VUMC/General/R01+R21 Outcomes Studies/Analysis/Scoring/Completed scoring")
   task <- c(NA,NA)
    
   for(d in 1:length(date)){
@@ -172,12 +162,14 @@ Talker_Discrimination_Func <- function(participant, date, calDate){
       
       
       # Adding Average Columns
+      Data2$REDCap <- NA
       Data2$AvgCorrect <- NA
       Data2$AvgRT <- NA
       Data2$AvgRating <- NA
       
       
       # Adding Gender Scoring Columns
+      Data2$Scoring_Logs <- NA
       Data2$ST_Score <- NA
       Data2$ST_RT <- NA
       Data2$ST_Rating <- NA

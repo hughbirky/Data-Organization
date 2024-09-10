@@ -1,22 +1,8 @@
-Ravens_Func <- function(participant, date, calDate){
+Ravens_Func <- function(participant, date, calDate, origin){
 
-  # Finding who's computer we are on
-  origin <- "C:/Users"
-  # Setting the working path for data collection
-  setwd(origin)
-  # Getting a list of all of the excel files
-  files = list.files(full.names = T)
-  # Getting rid of the ./
-  files <- gsub(x = files, pattern = "./", replacement = "")
-  # Getting the folder we need for the participant
-  files <- files[grepl("hughm", files)]
-  
-  if(files == "hughm"){
-    path <- "C:/Users/hughm/OneDrive - VUMC/General/R01+R21 Outcomes Studies/Data Collection/Subject testing/Cochlear Implant"
-    analysis <- "C:/Users/hughm/OneDrive - VUMC/General/R01+R21 Outcomes Studies/Analysis/Scoring/Completed scoring"
-  } else{
-    path <- "f"
-  }
+  # Setting paths
+  path <- paste0(origin,"OneDrive - VUMC/General/R01+R21 Outcomes Studies/Data Collection/Subject testing/Cochlear Implant")
+  analysis <- paste0(origin,"OneDrive - VUMC/General/R01+R21 Outcomes Studies/Analysis/Scoring/Completed scoring")
   
   
   
@@ -87,9 +73,11 @@ Ravens_Func <- function(participant, date, calDate){
   length <- 
   
   # Adding new columns
+  Data$REDCap <- NA
   Data$Mean_RT <- NA
   Data$Number_Correct <- NA
   Data$Number_Answered <- NA
+  Data$Scoring_Logs
   Data$Final_Score <- NA
   
   # Calculating mean response time

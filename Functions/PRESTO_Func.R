@@ -1,25 +1,12 @@
-PRESTO_Func <- function(participant, date, calDate){
+PRESTO_Func <- function(participant, date, calDate, origin){
 task <- c("PRESTO")
 
 
   t = 1
   for(t in 1:length(task)){
-    # Finding who's computer we are on
-    origin <- "C:/Users"
-    # Setting the working path for data collection
-    setwd(origin)
-    # Getting a list of all of the excel files
-    files = list.files(full.names = T)
-    # Getting rid of the ./
-    files <- gsub(x = files, pattern = "./", replacement = "")
-    # Getting the folder we need for the participant
-    files <- files[grepl("hughm", files)]
-    
-    if(files == "hughm"){
-      path <- "C:/Users/hughm/OneDrive - VUMC/General/R01+R21 Outcomes Studies/Data Collection/Subject testing/Cochlear Implant"
-    } else{
-      path <- "f"
-    }
+    # Setting paths
+    path <- paste0(origin,"OneDrive - VUMC/General/R01+R21 Outcomes Studies/Data Collection/Subject testing/Cochlear Implant")
+    analysis <- paste0(origin,"OneDrive - VUMC/General/R01+R21 Outcomes Studies/Analysis/Scoring/Completed scoring")
     
     
     # Setting the working path for data collection
@@ -78,7 +65,7 @@ task <- c("PRESTO")
       listName <-gsub(x = listName, pattern = "-", replacement = "")
       
       # Getting template path
-      templatePath <- paste0("C:/Users/hughm/OneDrive - VUMC/General/R01+R21 Outcomes Studies/Data Collection/Scoring Templates/",task[t],"/Score Sheets/Hugh Score")
+      templatePath <- paste0("C:/Users/hughm/OneDrive - VUMC/General/R01+R21 Outcomes Studies/Analysis/Scoring/Scoring templates/PRESTO/Score Sheets/Hugh Score")
       setwd(templatePath)
       
       # Getting a list of all of the folders

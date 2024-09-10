@@ -1,22 +1,8 @@
-Inquisit_Func <- function(participant, date, calDate){
+Inquisit_Func <- function(participant, date, calDate, origin){
 
-  # Finding who's computer we are on
-  origin <- "C:/Users"
-  # Setting the working path for data collection
-  setwd(origin)
-  # Getting a list of all of the excel files
-  files = list.files(full.names = T)
-  # Getting rid of the ./
-  files <- gsub(x = files, pattern = "./", replacement = "")
-  # Getting the folder we need for the participant
-  files <- files[grepl("hughm", files)]
-  
-  if(files == "hughm"){
-    path <- "C:/Users/hughm/OneDrive - VUMC/General/R01+R21 Outcomes Studies/Data Collection/Subject testing/Cochlear Implant"
-    analysis <- "C:/Users/hughm/OneDrive - VUMC/General/R01+R21 Outcomes Studies/Analysis/Scoring/Completed scoring"
-  } else{
-    path <- "f"
-  }
+  # Setting paths
+  path <- paste0(origin,"OneDrive - VUMC/General/R01+R21 Outcomes Studies/Data Collection/Subject testing/Cochlear Implant")
+  analysis <- paste0(origin,"OneDrive - VUMC/General/R01+R21 Outcomes Studies/Analysis/Scoring/Completed scoring")
   
   
   
@@ -90,7 +76,7 @@ Inquisit_Func <- function(participant, date, calDate){
   
   
   
-  p = 1
+  p = 2
   i = 7
   for(p in 1:2){
     setwd(path[p])
@@ -101,6 +87,7 @@ Inquisit_Func <- function(participant, date, calDate){
     
       # Renaming spreadsheets for organization based on the task name
       filesEx <- gsub(x = files1, pattern = ".iqdat", replacement = ".xlsx")
+      i = 3
       for(i in 1:length(files1)){
         # Reading in the data
         if(grepl("iqdat",files1[i])){
@@ -114,17 +101,23 @@ Inquisit_Func <- function(participant, date, calDate){
           if(grepl("summary",files1[i])){
             # Writing a new one for backwards
             if(grepl("backw",files1[i])){
+              
+              
+              
               write.xlsx(data,paste0(analysis[p],"/",participant,"_",calDate,"_Backward Digit Span.xlsx"),showNA = F)
             } else if(grepl("forw",files1[i])){ # Writing a new one for forward
               write.xlsx(data,paste0(analysis[p],"/",participant,"_",calDate,"_Forward Digit Span.xlsx"),showNA = F)
             } else{ # Writing a new one for stroop
+              # Changing the percentages to 0-100
+              data$V12[2] <- as.numeric(data$V12[2]) * 100
+              data$V13[2] <- as.numeric(data$V13[2]) * 100
+              data$V14[2] <- as.numeric(data$V14[2]) * 100
               write.xlsx(data,paste0(analysis[p],"/",participant,"_",calDate,"_Stroop.xlsx"),showNA = F)
             }
           }
         }
       }
   }
-
 }
 
 

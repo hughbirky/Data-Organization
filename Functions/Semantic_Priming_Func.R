@@ -1,22 +1,9 @@
-Semantic_Priming_Func <- function(participant, date, calDate){
+Semantic_Priming_Func <- function(participant, date, calDate, origin){
 
 
-  # Finding who's computer we are on
-  origin <- "C:/Users"
-  # Setting the working path for data collection
-  setwd(origin)
-  # Getting a list of all of the excel files
-  files = list.files(full.names = T)
-  # Getting rid of the ./
-  files <- gsub(x = files, pattern = "./", replacement = "")
-  # Getting the folder we need for the participant
-  files <- files[grepl("hughm", files)]
-  
-  if(files == "hughm"){
-    path <- "C:/Users/hughm/OneDrive - VUMC/General/R01+R21 Outcomes Studies/Data Collection/Subject testing/Cochlear Implant"
-  } else{
-    path <- "f"
-  }
+  # Setting paths
+  path <- paste0(origin,"OneDrive - VUMC/General/R01+R21 Outcomes Studies/Data Collection/Subject testing/Cochlear Implant")
+  analysis <- paste0(origin,"OneDrive - VUMC/General/R01+R21 Outcomes Studies/Analysis/Scoring/Completed scoring")
   
   # Setting the working path for data collection
   setwd(path)
@@ -41,7 +28,7 @@ Semantic_Priming_Func <- function(participant, date, calDate){
   
   
   # Copying files over
-  file.copy(from = "C:/Users/hughm/OneDrive - VUMC/General/R01+R21 Outcomes Studies/Data Collection/Scoring Templates/Semantic Priming/Semantic_Priming Scoring Template.xlsx", to = paste0(path,"/",participant,"_",calDate,"_Semantic.xlsx"))
+  file.copy(from = "C:/Users/hughm/OneDrive - VUMC/General/R01+R21 Outcomes Studies/Analysis/Scoring/Scoring Templates/Semantic Priming/Semantic_Priming Scoring Template.xlsx", to = paste0(path,"/",participant,"_",calDate,"_Semantic.xlsx"))
   
   
   

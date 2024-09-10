@@ -1,21 +1,7 @@
-Lexical_Decision_Func <- function(participant, date, calDate){
-  # Finding who's computer we are on
-  origin <- "C:/Users"
-  # Setting the working path for data collection
-  setwd(origin)
-  # Getting a list of all of the excel files
-  files = list.files(full.names = T)
-  # Getting rid of the ./
-  files <- gsub(x = files, pattern = "./", replacement = "")
-  # Getting the folder we need for the participant
-  files <- files[grepl("hughm", files)]
-  
-  if(files == "hughm"){
-    path <- "C:/Users/hughm/OneDrive - VUMC/General/R01+R21 Outcomes Studies/Data Collection/Subject testing/Cochlear Implant"
-    analysis <- "C:/Users/hughm/OneDrive - VUMC/General/R01+R21 Outcomes Studies/Analysis/Scoring/Completed scoring"
-  } else{
-    path <- "f"
-  }
+Lexical_Decision_Func <- function(participant, date, calDate, origin){
+  # Setting paths
+  path <- paste0(origin,"OneDrive - VUMC/General/R01+R21 Outcomes Studies/Data Collection/Subject testing/Cochlear Implant")
+  analysis <- paste0(origin,"OneDrive - VUMC/General/R01+R21 Outcomes Studies/Analysis/Scoring/Completed scoring")
   
   
   
@@ -136,8 +122,7 @@ Lexical_Decision_Func <- function(participant, date, calDate){
   total <- Data2[!is.na(Data2$Group_num),]
   
   # Making scoring columns
-  Data2$Total_Correct <- NA
-  Data2$Total_RT <- NA
+  Data2$REDCap <- NA
   Data2$Category1_Correct <- NA
   Data2$Category1_RT <- NA
   Data2$Category2_Correct <- NA
@@ -148,6 +133,9 @@ Lexical_Decision_Func <- function(participant, date, calDate){
   Data2$Category4_RT <- NA
   Data2$Category5_Correct <- NA
   Data2$Category5_RT <- NA
+  Data2$Scoring_Log <- NA
+  Data2$Total_Correct <- NA
+  Data2$Total_RT <- NA
   
   # Scoring
   Data2$Total_Correct[1] <- mean(total$Correct)*100

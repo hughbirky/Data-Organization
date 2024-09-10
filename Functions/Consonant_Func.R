@@ -1,28 +1,21 @@
-Consonant_Func <- function(participant, date, calDate){
+Consonant_Func <- function(participant, date, calDate, origin){
   
-  # Finding who's computer we are on
-  origin <- "C:/Users"
-  # Setting the working path for data collection
-  setwd(origin)
-  # Getting a list of all of the excel files
-  files = list.files(full.names = T)
-  # Getting rid of the ./
-  files <- gsub(x = files, pattern = "./", replacement = "")
-  # Getting the folder we need for the participant
-  files <- files[grepl("hughm", files)]
   
-  if(files == "hughm"){
-    path <- "C:/Users/hughm/OneDrive - VUMC/General/R01+R21 Outcomes Studies/Data Collection/Subject testing/Cochlear Implant"
-    analysis <- "C:/Users/hughm/OneDrive - VUMC/General/R01+R21 Outcomes Studies/Analysis/Scoring/Completed scoring"
-  } else{
-    path <- "f"
-  }
+  path <- paste0(origin,"OneDrive - VUMC/General/R01+R21 Outcomes Studies/Data Collection/Subject testing/Cochlear Implant")
+  analysis <- paste0(origin,"OneDrive - VUMC/General/R01+R21 Outcomes Studies/Analysis/Scoring/Completed scoring")
+  
+  # if(files == "hughm"){
+  #   path <- "C:/Users/hughm/OneDrive - VUMC/General/R01+R21 Outcomes Studies/Data Collection/Subject testing/Cochlear Implant"
+  #   analysis <- "C:/Users/hughm/OneDrive - VUMC/General/R01+R21 Outcomes Studies/Analysis/Scoring/Completed scoring"
+  # } else{
+  #   path <- "f"
+  # }
   
   p = 1
   for(p in 1:length(participant)){
   
     # Setting the unwanted columns shared between spreadsheets
-    gorillaColumns <- c("Event Index","UTC Timestamp","UTC Date and Time","Local Timezone","Experiment ID","Experiment Version",
+    gorillaColumns <- c("Event Index","Participant OS","UTC Timestamp","UTC Date and Time","Local Date and Time","Local Timezone","Experiment ID","Experiment Version",
                         "Tree Node Key","Repeat Key","Schedule ID","Participant Private ID","Participant Starting Group",
                         "Participant Status","Participant Completion Code","Participant External Session ID",
                         "Participant Device Type","Participant Device","Participant OS","Participant Browser",
@@ -142,6 +135,10 @@ Consonant_Func <- function(participant, date, calDate){
     
     # Making list of consonants
     consonants <- c("K","Z","M","N","DH","SH","B","ZS","T","V","D","S","TH","G","P","F")
+    
+    
+    # Adding label
+    Data2$REDCap <- NA
     
     # Counter
     total <- 0

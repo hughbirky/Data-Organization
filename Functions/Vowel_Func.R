@@ -1,28 +1,14 @@
-Vowel_Func <- function(participant, date, calDate){
+Vowel_Func <- function(participant, date, calDate, origin){
   
-  # Finding who's computer we are on
-  origin <- "C:/Users"
-  # Setting the working path for data collection
-  setwd(origin)
-  # Getting a list of all of the excel files
-  files = list.files(full.names = T)
-  # Getting rid of the ./
-  files <- gsub(x = files, pattern = "./", replacement = "")
-  # Getting the folder we need for the participant
-  files <- files[grepl("hughm", files)]
-  
-  if(files == "hughm"){
-    path <- "C:/Users/hughm/OneDrive - VUMC/General/R01+R21 Outcomes Studies/Data Collection/Subject testing/Cochlear Implant"
-    analysis <- "C:/Users/hughm/OneDrive - VUMC/General/R01+R21 Outcomes Studies/Analysis/Scoring/Completed scoring"
-  } else{
-    path <- "f"
-  }
+  # Setting paths
+  path <- paste0(origin,"OneDrive - VUMC/General/R01+R21 Outcomes Studies/Data Collection/Subject testing/Cochlear Implant")
+  analysis <- paste0(origin,"OneDrive - VUMC/General/R01+R21 Outcomes Studies/Analysis/Scoring/Completed scoring")
   
   p = 1
   for(p in 1:length(participant)){
     
     # Setting the unwanted columns shared between spreadsheets
-    gorillaColumns <- c("Event Index","UTC Timestamp","UTC Date and Time","Local Timezone","Experiment ID","Experiment Version",
+    gorillaColumns <- c("Event Index","Participant OS","UTC Timestamp","UTC Date and Time","Local Date and Time","Local Timezone","Experiment ID","Experiment Version",
                         "Tree Node Key","Repeat Key","Schedule ID","Participant Private ID","Participant Starting Group",
                         "Participant Status","Participant Completion Code","Participant External Session ID",
                         "Participant Device Type","Participant Device","Participant OS","Participant Browser",
@@ -114,15 +100,22 @@ Vowel_Func <- function(participant, date, calDate){
     Data <- read_excel(files[1])
     Data1 <- read_excel(files[2])
     
+    
+    # Fixing error with UTC Timestamp and Date
+    Data <- Data[,!names(Data) %in% c("UTC Date","Local Date")]
+    # Removing unwanted shared columns from all spreadsheets
+    Data1 <- Data1[,!names(Data1) %in% c("UTC Date","Local Date")]
+    
+    
     Data1$`Reaction Time` <- as.double(Data1$`Reaction Time`)
     Data$`Reaction Time` <- as.double(Data$`Reaction Time`)
     
-    Data1$`UTC Date and Time` <- as.character(Data1$`UTC Date and Time`)
-    Data$`UTC Date and Time` <- as.character(Data$`UTC Date and Time`)
-    Data1$`Local Date and Time` <- as.character(Data1$`Local Date and Time`)
-    Data$`Local Date and Time` <- as.character(Data$`Local Date and Time`)
-    Data1$`Participant OS` <- as.character(Data1$`Participant OS`)
-    Data$`Participant OS` <- as.character(Data$`Participant OS`)
+    # Data1$`UTC Date and Time` <- as.character(Data1$`UTC Date and Time`)
+    # Data$`UTC Date and Time` <- as.character(Data$`UTC Date and Time`)
+    # Data1$`Local Date and Time` <- as.character(Data1$`Local Date and Time`)
+    # Data$`Local Date and Time` <- as.character(Data$`Local Date and Time`)
+    # Data1$`Participant OS` <- as.character(Data1$`Participant OS`)
+    # Data$`Participant OS` <- as.character(Data$`Participant OS`)
     
     # Binding rows
     Data2 <- bind_rows(Data1,Data)
@@ -144,6 +137,8 @@ Vowel_Func <- function(participant, date, calDate){
     overallTotal <- 0
     count <- 0
     
+    # Adding label
+    Data2$REDCap <- NA
     
     v = 1
     i = 1

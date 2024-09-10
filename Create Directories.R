@@ -20,16 +20,16 @@ shell("cls")
 # Clearing the environment of previous variables
 rm(list=ls()) 
 
-participant <- c("CI224")
-name <- c("Rodgers")
-date <- c("preop")
+participant <- c("CI000")
+name <- c("Testing")
+# date <- c("preop")
 # date <- c("1 month")
 # date <- c("3 month")
-# date <- c("6 month")
+date <- c("6 month")
 # date <- c("12 month")
-calDate <- "08.21.2024"
-surgeryDate <- "08.22.2024"
-isCochlear <- F
+calDate <- "09.05.2024"
+surgeryDate <- ""
+isCochlear <- T
 travel <- F
 
 
@@ -163,7 +163,7 @@ if(!dir.exists(paste0(path,"/Inquisit Tasks"))){
 
 if(!dir.exists(paste0(path,"/Wav Files"))){
   dir.create(paste0(path,"/Wav Files"))
-  dir.create(paste0(path,"/Wav Files/Backup"))
+  dir.create(paste0(path,"/Wav Files/Backup DR-40"))
 }
 
 

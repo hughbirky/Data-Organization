@@ -1,4 +1,4 @@
-MLST_Convert_Audio_Func <- function(participant, date, calDate){
+MLST_Convert_Audio_Func <- function(participant, date, calDate, origin){
 
   done <- ""
   
@@ -6,24 +6,9 @@ MLST_Convert_Audio_Func <- function(participant, date, calDate){
   d = 1
   for(p in 1:length(participant)){
     for(d in 1:length(date)){
-      # Finding who's computer we are on
-      origin <- "C:/Users"
-      # Setting the working path for data collection
-      setwd(origin)
-      # Getting a list of all of the excel files
-      files = list.files(full.names = T)
-      # Getting rid of the ./
-      files <- gsub(x = files, pattern = "./", replacement = "")
-      # Getting the folder we need for the participant
-      files <- files[grepl("hughm", files)]
-      
-      # Setting the working directory
-      if(files == "hughm"){
-        path <- "C:/Users/hughm/OneDrive - VUMC/General/R01+R21 Outcomes Studies/Data Collection/Subject testing/Cochlear Implant"
-        analysis <- "C:/Users/hughm/OneDrive - VUMC/General/R01+R21 Outcomes Studies/Analysis/Scoring/Completed scoring"
-      } else{
-        path <- "f"
-      }
+      # Setting paths
+      path <- paste0(origin,"OneDrive - VUMC/General/R01+R21 Outcomes Studies/Data Collection/Subject testing/Cochlear Implant")
+      analysis <- paste0(origin,"OneDrive - VUMC/General/R01+R21 Outcomes Studies/Analysis/Scoring/Completed scoring")
       
       
       
