@@ -2,8 +2,8 @@ Retroactive_Priming_Func <- function(participant, date, calDate, origin){
   move_to_analysis <- T
   
   # Setting paths
-  path <- paste0(origin,"OneDrive - VUMC/General/R01+R21 Outcomes Studies/Data Collection/Subject testing/Cochlear Implant")
-  analysis <- paste0(origin,"OneDrive - VUMC/General/R01+R21 Outcomes Studies/Analysis/Scoring/Completed scoring")
+  path <- paste0(origin,"General/R01+R21 Outcomes Studies/Data Collection/Subject testing/Cochlear Implant")
+  analysis <- paste0(origin,"General/R01+R21 Outcomes Studies/Analysis/Scoring/Completed scoring")
   
   
   for(d in 1:length(date)){
@@ -95,6 +95,7 @@ Retroactive_Priming_Func <- function(participant, date, calDate, origin){
     Data2$Condition <- template$Condition
     
     # Making scoring column
+    Data2$REDCap <- NA
     Data2$Correct_Quiet_Unrelated <- NA
     Data2$RT_Quiet_Unrelated <- NA
     Data2$Correct_Quiet_Related <- NA
@@ -107,6 +108,8 @@ Retroactive_Priming_Func <- function(participant, date, calDate, origin){
     Data2$RT_Noise2_Unrelated <- NA
     Data2$Correct_Noise2_Related <- NA
     Data2$RT_Noise2_Related <- NA
+    Data2$Unknown <- NA
+    
     
     # Filtering (p5 is quiet, zero is noise1, n5 is noise2)
     Quiet_Unrelated <- Data2 %>% 
@@ -145,12 +148,14 @@ Retroactive_Priming_Func <- function(participant, date, calDate, origin){
     
     
     # Making Totals
+    Data2$Scoring_Logs <- NA
     Data2$Quiet_Score_Total <- NA
     Data2$Noise1_Score_Total <- NA
     Data2$Noise2_Score_Total <- NA
     Data2$Quiet_RT_Total <- NA
     Data2$Noise1_RT_Total <- NA
     Data2$Noise2_RT_Total <- NA
+    Data2$Scoring_Logs <- NA
     Data2$Related_Score_Total <- NA
     Data2$Unrelated_Score_Total <- NA
     Data2$Related_RT_Total <- NA

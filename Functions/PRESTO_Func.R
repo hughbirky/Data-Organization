@@ -5,8 +5,8 @@ task <- c("PRESTO")
   t = 1
   for(t in 1:length(task)){
     # Setting paths
-    path <- paste0(origin,"OneDrive - VUMC/General/R01+R21 Outcomes Studies/Data Collection/Subject testing/Cochlear Implant")
-    analysis <- paste0(origin,"OneDrive - VUMC/General/R01+R21 Outcomes Studies/Analysis/Scoring/Completed scoring")
+    path <- paste0(origin,"General/R01+R21 Outcomes Studies/Data Collection/Subject testing/Cochlear Implant")
+    analysis <- paste0(origin,"General/R01+R21 Outcomes Studies/Analysis/Scoring/Completed scoring")
     
     
     # Setting the working path for data collection

@@ -1,8 +1,8 @@
 Consonant_Func <- function(participant, date, calDate, origin){
   
   
-  path <- paste0(origin,"OneDrive - VUMC/General/R01+R21 Outcomes Studies/Data Collection/Subject testing/Cochlear Implant")
-  analysis <- paste0(origin,"OneDrive - VUMC/General/R01+R21 Outcomes Studies/Analysis/Scoring/Completed scoring")
+  path <- paste0(origin,"General/R01+R21 Outcomes Studies/Data Collection/Subject testing/Cochlear Implant")
+  analysis <- paste0(origin,"General/R01+R21 Outcomes Studies/Analysis/Scoring/Completed scoring")
   
   # if(files == "hughm"){
   #   path <- "C:/Users/hughm/OneDrive - VUMC/General/R01+R21 Outcomes Studies/Data Collection/Subject testing/Cochlear Implant"

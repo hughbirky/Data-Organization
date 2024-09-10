@@ -14,10 +14,11 @@ library(stringdist)
 
 
 # Path to One Drive
-origin <- "C:/Users/hughm/"
+# origin <- "C:/Users/hughm/OneDrive - VUMC/"
+origin <- "/Users/gizem/Library/CloudStorage/OneDrive-VUMC/"
 
 # Participant ID
-participant <- c("CI000")
+participant <- c("CI211")
 
 # Testing Session
 # date <- c("preop")
@@ -27,16 +28,16 @@ date <- c("6 mo")
 # date <- c("12 mo")
 
 # Calendar date (ie. mm.dd.yyyy)
-calDate <- "09.05.2024"
+calDate <- "08.26.2024"
 
 
 
 # Make each variable T if you want to run this script for it and F if you do not
 # Vowel Task
-Vowel <- F
+Vowel <- T
 
 # Consonant Task
-Consonant <- T
+Consonant <- F
 
 # Prepare the MLST Task for scoring
 MLST <- F
@@ -55,7 +56,6 @@ Talker_Discrimination <- F
 
 # Lexical Decision
 Lexical_Decision <- F
-
 # Sentence Verification Task
 SVT <- F
 

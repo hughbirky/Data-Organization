@@ -6,8 +6,8 @@ Talker_Discrimination_Func <- function(participant, date, calDate, origin){
   move_to_analysis <- T
   
   # Setting paths
-  path <- paste0(origin,"OneDrive - VUMC/General/R01+R21 Outcomes Studies/Data Collection/Subject testing/Cochlear Implant")
-  analysis <- paste0(origin,"OneDrive - VUMC/General/R01+R21 Outcomes Studies/Analysis/Scoring/Completed scoring")
+  path <- paste0(origin,"General/R01+R21 Outcomes Studies/Data Collection/Subject testing/Cochlear Implant")
+  analysis <- paste0(origin,"General/R01+R21 Outcomes Studies/Analysis/Scoring/Completed scoring")
   task <- c(NA,NA)
    
   for(d in 1:length(date)){
