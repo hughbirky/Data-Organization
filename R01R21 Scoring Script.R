@@ -18,7 +18,7 @@ library(stringdist)
 origin <- "/Users/gizem/Library/CloudStorage/OneDrive-VUMC/"
 
 # Participant ID
-participant <- c("CI211")
+participant <- c("CI000")
 
 # Testing Session
 # date <- c("preop")
@@ -28,7 +28,7 @@ date <- c("6 mo")
 # date <- c("12 mo")
 
 # Calendar date (ie. mm.dd.yyyy)
-calDate <- "08.26.2024"
+calDate <- "09.05.2024"
 
 
 
@@ -37,54 +37,54 @@ calDate <- "08.26.2024"
 Vowel <- T
 
 # Consonant Task
-Consonant <- F
+Consonant <- T
 
 # Prepare the MLST Task for scoring
-MLST <- F
+MLST <- T
 
 # Convert the nonword audio files into wav files
-MLST_Convert_Audio <- F
+# MLST_Convert_Audio <- T
 
 # Prepare the Nonword Task for scoring
-Nonword <- F
+Nonword <- T
 
 # Convert the nonword audio files into wav files
-Nonword_Convert_Audio <- F
+# Nonword_Convert_Audio <- T
 
 # Talker Discrimination Task
-Talker_Discrimination <- F
+Talker_Discrimination <- T
 
 # Lexical Decision
-Lexical_Decision <- F
+Lexical_Decision <- T
 # Sentence Verification Task
-SVT <- F
+SVT <- T
 
 # Ravens Task
-Ravens <- F
+Ravens <- T
 
 # Rhyme Judgment Task
-Rhyme_Judgment <- F
+Rhyme_Judgment <- T
 
 # Semantic Priming Task
-Semantic_Priming <- F
+Semantic_Priming <- T
 
 # Retroactive Priming Task
-Retroactive_Priming <- F
+Retroactive_Priming <- T
 
 # Preparing the CVC task for scoring
-CVC <- F
+CVC <- T
 
 # Preparing the HS task for scoring
-HS <- F
+HS <- T
 
 # Preparing the HA task for scoring
-HA <- F
+HA <- T
 
 # Preparing the PRESTO Task for scoring
-PRESTO <- F
+PRESTO <- T
 
 # Inquisit Tasks
-Inquisit <- F
+Inquisit <- T
 
 
 
