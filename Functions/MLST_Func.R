@@ -94,5 +94,5 @@ MLST_Func <- function(participant, date, calDate, origin){
   # Writing the new excel sheet to the other folder
   write.xlsx(x = Data,file = paste0(participant,"_",calDate,"_MLST.xlsx"), sheetName = "Scorer 1",showNA = F)
   write.xlsx(x = Data,file = paste0(participant,"_",calDate,"_MLST.xlsx"), sheetName = "Scorer 2",append = TRUE,showNA = F)
-  setwd("C:/Users/hughm/Desktop")
+  # setwd("C:/Users/hughm/Desktop")
 }

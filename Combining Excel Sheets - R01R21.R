@@ -46,7 +46,7 @@ taskPath <- "C:/Users/hughm/OneDrive - VUMC/General/R01+R21 Outcomes Studies/Ana
 
 
 # List of Tasks to be moved
-# tasks <- c("/Matlab Tasks/Lexical Decision Task")
+tasks <- c("/Matlab Tasks/Lexical Decision Task")
 # tasks <- c("/Matlab Tasks/Ravens")
 # tasks <- c("/Matlab Tasks/Retroactive Priming")
 # tasks <- c("/Matlab Tasks/Rhyme Judgment Task")
@@ -59,7 +59,7 @@ taskPath <- "C:/Users/hughm/OneDrive - VUMC/General/R01+R21 Outcomes Studies/Ana
 # tasks <- c("/Gorilla Tasks/Consonant")
 # tasks <- c("/Gorilla Tasks/Vowel")
 # tasks <- c("/Gorilla Tasks/Nonword")
-tasks <- c("/Gorilla Tasks/Talker Discrimination")
+# tasks <- c("/Gorilla Tasks/Talker Discrimination")
 # tasks <- c("/Gorilla Tasks/MLST")
 # tasks <- c("/Inquisit Tasks/Stroop")
 # tasks <- c("/Inquisit Tasks/Digit Span")
@@ -113,18 +113,47 @@ files <- gsub(x = files, pattern = "./", replacement = "")
 files <- files[!grepl("Combined", files)]
 files <- files[!grepl("Old", files)]
 
+
 i = 2
 if(grepl("Talker",tasks[tasky])){
   files <- files[grepl("Best_",files)]
 }
 
 for(i in 1:length(files)){
+  # Reading the excel file
   scored <- read_excel(files[i])
+  
+  # Pulling the name of the participant
+  participant <- str_extract(files[i],"CI2\\d{2}")
+  
+  scored <- cbind(ID = participant, scored)
   
   if("Acc 1 or 0" %in% colnames(scored)){
     scored <- scored %>%
       dplyr::rename("Correct" = "Acc 1 or 0")
   }
+  
+  # Removing the REDCap column
+  if("REDCap" %in% colnames(scored)){
+    scored <- scored[,!names(scored) %in% "REDCap"]
+  }
+  # Removing the Scoring Logs column
+  if("Scoring_Log" %in% colnames(scored)){
+    scored <- scored[,!names(scored) %in% "Scoring_Log"]
+  }
+  # Removing the Scoring Logs column
+  if("Scoring_Logs" %in% colnames(scored)){
+    scored <- scored[,!names(scored) %in% "Scoring_Logs"]
+  }
+  # Removing the Scoring Logs column
+  if("Scoring Logs" %in% colnames(scored)){
+    scored <- scored[,!names(scored) %in% "Scoring Logs"]
+  }
+  # Removing the REDCap column
+  if("Unknown" %in% colnames(scored)){
+    scored <- scored[,!names(scored) %in% "Unknown"]
+  }
+  
   
   if(i == 1){
     full <- scored
