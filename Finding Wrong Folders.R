@@ -15,7 +15,7 @@ shell("cls")
 rm(list=ls()) 
 
 
-right = "Digit Span"
+right = ""
 
 # date <- c("preop")
 date <- c("preop","1 mo","3 mo","6 mo","12 mo")
@@ -34,7 +34,7 @@ analysis <- "C:/Users/hughm/OneDrive - VUMC/General/R01+R21 Outcomes Studies/Ana
 # tasks <- c("/Matlab Tasks/Retro")
 # tasks <- c("/Matlab Tasks/Rhyme")
 # tasks <- c("/Matlab Tasks/Semantic")
-# tasks <- c("/Matlab Tasks/Sentence")
+tasks <- c("/Matlab Tasks/Sentence")
 # tasks <- c("/Matlab Tasks/CVC")
 # tasks <- c("/Matlab Tasks/HA")
 # tasks <- c("/Matlab Tasks/HS")
