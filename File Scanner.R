@@ -16,9 +16,9 @@ rm(list=ls())
 
 right = ""
 
-# date <- c("preop")
+date <- c("preop")
 # date <- c("preop","1 mo","3 mo","6 mo","12 mo")
-date <- c("1 mo")
+# date <- c("1 mo")
 # date <- c("3 mo")
 # date <- c("6 mo")
 # date <- c("12 mo")
@@ -43,8 +43,8 @@ analysis <- "C:/Users/hughm/OneDrive - VUMC/General/R01+R21 Outcomes Studies/Ana
 # tasks <- c("/Matlab Tasks/HA")
 # tasks <- c("/Matlab Tasks/HS")
 # tasks <- c("/Matlab Tasks/PRESTO")
-# tasks <- c("/Inquisit Tasks/Stroop")
-tasks <- c("/Gorilla Tasks/Talker")
+tasks <- c("/Inquisit Tasks/Stroop")
+# tasks <- c("/Gorilla Tasks/Talker")
 # tasks <- c("/Gorilla Tasks/Vowel")
 
 
@@ -477,7 +477,7 @@ for(d in 1:length(date)){
       files <- files[!grepl("Old", files)]
 
       full2 <- ""
-      files <- files[grepl("CI_",files)]
+      files <- files[grepl("_CI",files)]
       if(length(files) > 0){
         for(i in 1:length(files)){
           scored <- read_excel(files[i])
@@ -547,6 +547,11 @@ for(d in 1:length(date)){
     # Reading the excel file
     scored <- read_excel(files[i])
 
+    # If stroop, skips the first column
+    if("V4" %in% colnames(scored)){
+      scored <- read_excel(files[i],skip = 1)
+    }
+    
     # Pulling the name of the participant
     participant2 <- str_extract(files[i],"CI2\\d{2}")
 
