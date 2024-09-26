@@ -16,8 +16,8 @@ rm(list=ls())
 
 right = ""
 
-date <- c("preop")
-# date <- c("preop","1 mo","3 mo","6 mo","12 mo")
+# date <- c("preop")
+date <- c("preop","1 mo","3 mo","6 mo","12 mo")
 # date <- c("1 mo")
 # date <- c("3 mo")
 # date <- c("6 mo")
@@ -29,7 +29,11 @@ taskPath <- "C:/Users/hughm/OneDrive - VUMC/General/R01+R21 Outcomes Studies/Ana
 analysis <- "C:/Users/hughm/OneDrive - VUMC/General/R01+R21 Outcomes Studies/Analysis/Scoring/Completed scoring"
 
 # List of Tasks to be moved
+# tasks <- c("/Gorilla Tasks/Consonant")
+# tasks <- c("/Inquisit Tasks/Digit")
 # tasks <- c("/Matlab Tasks/Lexical Decision")
+# tasks <- c("/Gorilla Tasks/MLST")
+# tasks <- c("/Gorilla Tasks/Nonword")
 # tasks <- c("/Matlab Tasks/Ravens")
 # tasks <- c("/Matlab Tasks/Retro")
 # tasks <- c("/Matlab Tasks/Rhyme")
@@ -38,14 +42,11 @@ analysis <- "C:/Users/hughm/OneDrive - VUMC/General/R01+R21 Outcomes Studies/Ana
 # tasks <- c("/Matlab Tasks/CVC")
 # tasks <- c("/Matlab Tasks/HA")
 # tasks <- c("/Matlab Tasks/HS")
-tasks <- c("/Matlab Tasks/PRESTO")
-# tasks <- c("/Gorilla Tasks/Consonant")
-# tasks <- c("/Gorilla Tasks/Vowel")
-# tasks <- c("/Gorilla Tasks/Nonword")
-# tasks <- c("/Gorilla Tasks/Talker")
-# tasks <- c("/Gorilla Tasks/MLST")
+# tasks <- c("/Matlab Tasks/PRESTO")
 # tasks <- c("/Inquisit Tasks/Stroop")
-# tasks <- c("/Inquisit Tasks/Digit")
+# tasks <- c("/Gorilla Tasks/Talker")
+tasks <- c("/Gorilla Tasks/Vowel")
+
 
 
 tasky <- 1
@@ -79,7 +80,7 @@ participant <- participant[grepl("2", participant)]
 # Iterator to check if they have been added
 i = 0
 
-p = 1
+p = 2
 
 d = 1
 # Iterating through all of the folders to make a list of what files are current
@@ -142,6 +143,7 @@ for(d in 1:length(date)){
 
         # Getting rid of the old folder
         scored_files <- scored_files[!grepl("Old", scored_files)]
+        scored_files <- scored_files[!grepl("Wrong", scored_files)]
         # Fixing HA error
         scored_files <- scored_files[!grepl("HA_List 2", scored_files)]
         
@@ -242,8 +244,21 @@ for(d in 1:length(date)){
   files_combined <- files_combined[!grepl("Combined", files_combined)]
   files_combined <- files_combined[!grepl("Old", files_combined)]
 
+
+  
+  # Deleting directories and resetting files combined  
+  if(grepl("CVC",tasksAlone,ignore.case = FALSE) || grepl("HS",tasksAlone,ignore.case = FALSE) || grepl("HA",tasksAlone,ignore.case = FALSE) || grepl("PRESTO",tasksAlone,ignore.case = FALSE)){
+    for(c in 1:length(files_combined)){
+      unlink(files_combined[c],recursive = TRUE) 
+    }
+    
+    files_combined <- "bruhhhhhhh"
+  }
+  
+  
+
   # Checking to see if we have copied into this folder so far
-  if(length(files_combined)){
+  if(length(files_combined) > 0){
     # Clearing out the number of files we have scanned so we aren't recopying files
     for(c in 1:length(files_combined)){
       total_tasks_path <- total_tasks_path[!grepl(files_combined[c], total_tasks_path)]
